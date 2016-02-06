@@ -503,48 +503,48 @@ public class BukkitQueue_1_8 extends BukkitQueue_0 {
             }
         }
         // GC again
-        System.gc();
-        System.gc();
-        // If still critical memory
-        int free = MemUtil.calculateMemory();
-        if (free <= 1) {
-            for (final Chunk chunk : toUnload) {
-                unloadChunk(chunk.getWorld().getName(), chunk);
-            }
-        } else if (free == Integer.MAX_VALUE) {
-            for (final Chunk chunk : toUnload) {
-                chunk.unload(true, false);
-            }
-        } else {
-            return;
-        }
-        toUnload = null;
-        players = null;
-        System.gc();
-        System.gc();
-        free = MemUtil.calculateMemory();
-        if (free > 1) {
-            return;
-        }
-        Collection<? extends Player> online = Bukkit.getOnlinePlayers();
-        if (online.size() > 0) {
-            online.iterator().next().kickPlayer("java.lang.OutOfMemoryError");
-        }
-        online = null;
-        System.gc();
-        System.gc();
-        free = MemUtil.calculateMemory();
-        if ((free > 1) || (Bukkit.getOnlinePlayers().size() > 0)) {
-            return;
-        }
-        for (final World world : Bukkit.getWorlds()) {
-            final String name = world.getName();
-            for (final Chunk chunk : world.getLoadedChunks()) {
-                unloadChunk(name, chunk);
-            }
-        }
-        System.gc();
-        System.gc();
+//        System.gc();
+//        System.gc();
+//        // If still critical memory
+//        int free = MemUtil.calculateMemory();
+//        if (free <= 1) {
+//            for (final Chunk chunk : toUnload) {
+//                unloadChunk(chunk.getWorld().getName(), chunk);
+//            }
+//        } else if (free == Integer.MAX_VALUE) {
+//            for (final Chunk chunk : toUnload) {
+//                chunk.unload(true, false);
+//            }
+//        } else {
+//            return;
+//        }
+//        toUnload = null;
+//        players = null;
+//        System.gc();
+//        System.gc();
+//        free = MemUtil.calculateMemory();
+//        if (free > 1) {
+//            return;
+//        }
+//        Collection<? extends Player> online = Bukkit.getOnlinePlayers();
+//        if (online.size() > 0) {
+//            online.iterator().next().kickPlayer("java.lang.OutOfMemoryError");
+//        }
+//        online = null;
+//        System.gc();
+//        System.gc();
+//        free = MemUtil.calculateMemory();
+//        if ((free > 1) || (Bukkit.getOnlinePlayers().size() > 0)) {
+//            return;
+//        }
+//        for (final World world : Bukkit.getWorlds()) {
+//            final String name = world.getName();
+//            for (final Chunk chunk : world.getLoadedChunks()) {
+//                unloadChunk(name, chunk);
+//            }
+//        }
+//        System.gc();
+//        System.gc();
     }
     
     public Object newChunkSection(final int i, final boolean flag, final char[] ids) {
